@@ -22,8 +22,8 @@ def load_data(path: Path) -> pd.DataFrame:
     print(df.dtypes)
     return df
 
-def chek_gain (df: pd.DataFrame, order_col: str= ORDER_COL)->str:
-    rows, orders = len(df), df[order_col].nunique()
+def chek_gain (df: pd.DataFrame)->str:
+    rows, orders = len(df), df[ORDER_COL].nunique()
     grain = "line" if rows> orders else "order"
     print("rows", rows, "orders", orders, "->", grain)
     return grain
@@ -44,10 +44,10 @@ def build_clean(df: pd.DataFrame) -> pd.DataFrame:
     print("orders", clean[ORDER_COL].nunique())
     return clean
 
-def sanity_check ( raw: pd.DataFrame, clean: pd.DataFrame, order_col: str = ORDER_COL) -> None:
+def sanity_check ( raw: pd.DataFrame, clean: pd.DataFrame) -> None:
     print ("---sanity----")
     print ("rows", len(raw), "->", len(clean))
-    print ("orders", raw[order_col].nunique(), "->", clean[order_col].nunique())
+    print ("orders", raw[ORDER_COL].nunique(), "->", clean[ORDER_COL].nunique())
     print ("dates", clean[DATE_COL].min(), "->", clean[DATE_COL].max())
 
 # в описании сказано что уникальные, но на всякий случий проверим
@@ -73,8 +73,6 @@ def main() -> None:
     clean = add_keys (clean)
     save_tables(clean)
 
-
-   
 
 if __name__ == "__main__":
     main()
