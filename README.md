@@ -119,16 +119,6 @@ GMV % of Total = DIVIDE([GMV], CALCULATE([GMV], ALLSELECTED('clean_orders')))
 
 Python (pandas, pyarrow) → MySQL 8 → Power BI Desktop (DAX).
 
----
-
-## Идеи на потом
-
-- **Маршрут B** — `people`, repeat, LTV (если включить `NEED_PEOPLE`)
-- **Маршрут C** — маржа (`profit_margin`), топ `product_id`
-- **Overview** — MoM % к прошлому месяцу (DAX)
-- **График по месяцам** — скрыть или пометить неполный 2025-09
-- **Сверка grain** — в `report.py` orders через `order_id`; в SQL/PBI через `order_key` (сейчас совпадают)
-- **Секция Power BI** в общей методичке
 
 ---
 
